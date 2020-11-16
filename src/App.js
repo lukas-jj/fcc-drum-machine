@@ -78,7 +78,7 @@ function handleClick(e) {
     audioSamples.bank2[e.target.id].load()
     audioSamples.bank2[e.target.id].play()
   }
-}ki
+}
 
 function App() {
 
