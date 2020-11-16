@@ -1,24 +1,118 @@
+* {
+  margin: 0;
+  font-family: 'Alfa Slab One', cursive;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-family: 'Press Start 2P', cursive;
+}
+
+html {
+  background: url("https://imgs.classicfm.com/images/61630?width=1000&crop=16_9&signature=UOxsAc4VhzNYQEIG-RTXur_mix8=") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+}
 
 #Header {
-display:flex;
-justify-content: center;
-background-color:#2e7d32;
-color:#ffffff;
+  
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(black,purple);
+  border-bottom: inset black;
+  color: white;
+  height: 7rem;
+  font-size: 1rem;
+  margin: 0 auto;
+  align-items: center;
+  background:url("https://image.freepik.com/free-photo/background-starry-dark-night-sky_118086-762.jpg");
+  background-size: contain;
+}
+
+body {
+  font-weight: 300;
+  background-repeat: no-repeat;
+  width: 100%
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+}
+
+.Rows {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.button {
+  font-size: 1.8rem;
+  background: radial-gradient(pink, purple);
+  color: black;
+  margin: .8rem;
+  border-radius: 10px;
+  font-weight: bold;
+  width: 8rem;
+  border: inset black .1rem;
+  box-shadow: 3px 3px;
+}
+
+.bank {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 20rem;
+  height: 2rem;
+  margin: 2rem auto;
+  border-radius: 50px;
+  background: linear-gradient(purple, pink);
+  color: black;
+  font-size: 1rem;
+  border: inset black .1rem;
+  box-shadow: 3px 3px;
 }
 
 
-body {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 300;
-  margin:auto;
- }
- 
- h1, h2, h3, h4, h5, h6 {
-  font-weight: 500;
- }
+.large-header {
+  position: relative;
+  width: 100%;
+  background: #111;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center center;
+  z-index: 1;
+}
 
- #DrumMachine {
-  display: flex;
-  background-color: blue;
-  justify-content:center;
+.demo .large-header {
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/demo-bg.jpg");
+}
+
+.main-title {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  color: #F9F1E9;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.demo .main-title {
+  text-transform: uppercase;
+  font-size: 4.2em;
+  letter-spacing: 0.1em;
+}
+
+.main-title .thin {
+  font-weight: 200;
+}
+
+@media only screen and (max-width: 768px) {
+  .demo .main-title {
+     font-size: 3em;
   }
+}
+

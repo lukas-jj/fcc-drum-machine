@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React from 'react';
 
 const audioSamples = {
   bank1: {
@@ -19,46 +19,84 @@ const audioSamples = {
   }
 }
 
+let bank = true
+let bankName = "bank1"
+
+
+function changeBank() {
+  if (bank){
+    bank = false
+  }  
+  else{ bank = true
+  }
+}
+
+function changeName() {
+return bank ? "bank1" :  "bumhole"
+
+}
+
+document.addEventListener("keydown", keyPressed)
+function keyPressed(e) {
+
+  if (bank && audioSamples.bank1[e.key]) {
+    audioSamples.bank1[e.key].load()
+    audioSamples.bank1[e.key].play()
+    colorChange(e)
+  }
+  else if (audioSamples.bank2[e.key]) {
+    audioSamples.bank2[e.key].load()
+    audioSamples.bank2[e.key].play()
+    colorChange(e)
+  }
+
+  else if (e.key === "p") {
+    changeBank()
+    colorChange(e)
+  }
+}
+
+function colorChange(e) {
+  setTimeout(function () {
+    document.getElementById(e.key).style.color = null
+    document.getElementById(e.key).style.backgroundColor = null
+    document.getElementById(e.key).style.border = null
+    document.getElementById(e.key).style.background = null
+  }, 100);
+  document.getElementById(e.key).style.background = "radial-gradient(white, purple)";
+  document.getElementById(e.key).style.backgroundColor = "red"
+  
+
+}
+
+function handleClick(e) {
+  if (bank) {
+    audioSamples.bank1[e.target.id].load()
+    audioSamples.bank1[e.target.id].play()
+  }
+  else {
+    audioSamples.bank2[e.target.id].load()
+    audioSamples.bank2[e.target.id].play()
+  }
+}ki
+
 function App() {
 
-  const [banknum, setBanknum] = useState("bank1");
-
-  function changeBank() {
-    setBanknum(prevBanknum => prevBanknum === "bank1" ? prevBanknum = "bank2" : prevBanknum = "bank1")
-    console.log(banknum)
-  }
-
-  useEffect(() => {
-    document.addEventListener('keydown', function (e) {
-      if (audioSamples[banknum][e.key]) {
-        audioSamples[banknum][e.key].load()
-        audioSamples[banknum][e.key].play()
-      }
-      console.log(banknum)
-
-    })
-  }, [banknum])
-
-  function handleClick(e) {
-    if (banknum === "bank1") {
-      audioSamples.bank1[e.target.id].play()
-    }
-    else if (banknum === "bank2") {
-      audioSamples.bank2[e.target.id].play()
-    }
-  }
-
   return (
-    <div id="DrumMachine" className="App" >
-      <button id="q" onClick={handleClick} >Q</button>
-      <button id="w" onClick={handleClick}>W</button>
-      <button id="e" onClick={handleClick}>E</button>
-      <button id="a" onClick={handleClick}>A</button>
-      <button id="s" onClick={handleClick}>S</button>
-      <button id="d" onClick={handleClick}>D</button>
-      <button id="banks" onClick={changeBank}>Change Bank
-      </button>
+    <div id="allButtons">
+      <div id="DrumMachine" className="Rows"  >
+        <button id="q" class="button" onClick={handleClick} >Q</button>
+        <button id="w" class="button" onClick={handleClick} >W</button>
+        <button id="e" class="button" onClick={handleClick}>E</button>
+      </div>
+      <div className="Rows"> <button id="a" class="button" onClick={handleClick}>A</button>
+        <button id="s" class="button" onClick={handleClick} >S</button>
+        <button id="d" class="button" onClick={handleClick} >D</button></div>
+      <div>
+        <button id="p" class="bank" onClick={changeBank}> P (Change Bank) </button></div>
+  <h1>{changeName()}</h1>
     </div>
+    
   );
 }
 export default App;
